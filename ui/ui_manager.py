@@ -191,6 +191,8 @@ class DataManagementSystem:
         # Analysis Button
         analysis_btn = ctk.CTkButton(button_frame, text="Analysis", command=self.open_analysis_window)
         analysis_btn.pack(side="left", padx=5)
+
+        self.load_data()
         
     def load_data(self):
         # Clear Existing Data
@@ -230,6 +232,7 @@ class DataManagementSystem:
         print(my_paragon, opp_paragon, turn_order, result, my_mmr, date)
         
         if not is_valid_record((my_paragon, opp_paragon, turn_order, result, my_mmr, date)):
+            messagebox.showerror("Invalid Input", "Please check your input")
             return
 
         self.db_manager.insert_record((my_paragon, opp_paragon, turn_order, result, my_mmr, date))

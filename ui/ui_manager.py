@@ -110,13 +110,6 @@ class DataManagementSystem:
         
         ctk.CTkLabel(date_frame, text="Date:").pack(side="left", padx=5)
         ctk.CTkEntry(date_frame, textvariable=self.date_var, width=200).pack(side="right", padx=5)
-
-        # Analysis Button
-        analysis_frame = ctk.CTkFrame(left_frame)
-        analysis_frame.pack(fill="x", padx=10, pady=5)
-        
-        analysis_btn = ctk.CTkButton(analysis_frame, text="Analysis", command=self.open_analysis_window, width=200)
-        analysis_btn.pack(pady=5)
         
         # Right Frame
         right_frame = ctk.CTkFrame(self.main_frame)
@@ -194,6 +187,10 @@ class DataManagementSystem:
         
         delete_btn = ctk.CTkButton(button_frame, text="Delete Record", command=self.delete_record)
         delete_btn.pack(side="left", padx=5)
+
+        # Analysis Button
+        analysis_btn = ctk.CTkButton(button_frame, text="Analysis", command=self.open_analysis_window)
+        analysis_btn.pack(side="left", padx=5)
         
     def load_data(self):
         # Clear Existing Data

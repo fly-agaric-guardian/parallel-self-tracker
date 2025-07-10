@@ -101,7 +101,7 @@ class AnalysisUI:
             table_frame.pack(fill="x", padx=10, pady=5)
             
             # Create table
-            columns = ("Opp's Paragon", "OTP Matches", "OTP Wins", "OTP Winrate", "OTD Matches", "OTD Wins", "OTD Winrate", "Total Matches", "Total Winrate")
+            columns = ("Opp's Paragon", "Total Matches", "Total Winrate", "OTP Matches", "OTP Wins", "OTP Winrate", "OTD Matches", "OTD Wins", "OTD Winrate")
             tree = ttk.Treeview(table_frame, columns=columns, show="headings", height=len(paragon_stats[my_paragon]) + 1)
             
             # Set column titles
@@ -130,14 +130,14 @@ class AnalysisUI:
             
             tree.insert("", "end", values=(
                 "Overall",
+                total_matches,
+                f"{total_winrate:.1f}%",
                 total_otp_matches,
                 total_otp_wins,
                 f"{total_otp_winrate:.1f}%",
                 total_otd_matches,
                 total_otd_wins,
                 f"{total_otd_winrate:.1f}%",
-                total_matches,
-                f"{total_winrate:.1f}%"
             ), tags=('total',))
             
             # Add data
@@ -156,14 +156,14 @@ class AnalysisUI:
                 
                 tree.insert("", "end", values=(
                     opp_paragon,
+                    total_matches,
+                    f"{total_winrate:.1f}%",
                     otp_matches,
                     otp_wins,
                     f"{otp_winrate:.1f}%",
                     otd_matches,
                     otd_wins,
-                    f"{otd_winrate:.1f}%",
-                    total_matches,
-                    f"{total_winrate:.1f}%"
+                    f"{otd_winrate:.1f}%"
                 ))
             
             # Set total row style
@@ -182,7 +182,7 @@ class AnalysisUI:
                                font=("Arial", 16, "bold"))
         mmr_title.pack(pady=(30, 10))
         
-        # Prepare data
+        # Prepare data: only include MMR > 1000
         dates = []
         mmrs = []
         
@@ -192,8 +192,9 @@ class AnalysisUI:
             
             try:
                 mmr_int = int(mmr)
-                dates.append(date)
-                mmrs.append(mmr_int)
+                if mmr_int > 1000:
+                    dates.append(date)
+                    mmrs.append(mmr_int)
             except ValueError:
                 continue
         

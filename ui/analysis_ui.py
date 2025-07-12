@@ -208,7 +208,7 @@ class AnalysisUI:
         ax = fig.add_subplot(111)
         
         # Plot MMR line
-        ax.plot(range(len(dates)), mmrs, marker='o', linewidth=2, markersize=4)
+        ax.plot(range(len(dates)), mmrs, linewidth=2)
         
         # Set title and labels
         ax.set_title('MMR changes', fontsize=14, fontweight='bold')

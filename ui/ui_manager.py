@@ -7,7 +7,7 @@ from utils.validation import is_valid_record
 from ui.analysis_ui import AnalysisUI
 from tkinter import messagebox
 
-class DataManagementSystem:
+class UIManager:
     def __init__(self):
         self.root = ctk.CTk()
         self.root.title("Parallel Self Tracker")
@@ -284,10 +284,3 @@ class DataManagementSystem:
     def open_analysis_window(self):
         self.reset_ui()
         self.analysis_ui.setup_ui()
-
-def main():
-    app = DataManagementSystem()
-    app.run()
-
-if __name__ == "__main__":
-    main()

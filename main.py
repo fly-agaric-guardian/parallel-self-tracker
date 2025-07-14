@@ -1,7 +1,7 @@
-from ui.ui_manager import DataManagementSystem
+from ui.ui_manager import UIManager
 
 def main():
-    app = DataManagementSystem()
+    app = UIManager()
     app.run()
 
 if __name__ == "__main__":
